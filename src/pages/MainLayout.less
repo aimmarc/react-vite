@@ -1,0 +1,76 @@
+.layout-collapse-demo {
+	height: 100vh;
+	background: var(--color-fill-2);
+}
+
+.layout-collapse-demo .arco-layout-sider .logo {
+	height: 32px;
+	margin: 12px 0;
+}
+
+.layout-collapse-demo .arco-layout-footer {
+	color: var(--color-white);
+	text-align: center;
+	font-stretch: condensed;
+	font-size: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.layout-collapse-demo .arco-layout-footer {
+	color: var(--color-text-2);
+	height: 48px;
+	line-height: 48px;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.layout-collapse-demo .arco-layout-content {
+	color: var(--color-text-2);
+	font-weight: 400;
+	font-size: 14px;
+	flex: none;
+	.page-content-with-bg {
+		background: var(--color-bg-3);
+	}
+	.page-content-with-padding {
+		padding: 20px 24px;
+	}
+}
+
+.layout-collapse-demo .arco-layout-header {
+	display: flex;
+	align-items: center;
+	height: 54px;
+	line-height: 54px;
+	background: var(--color-bg-3);
+	color: var(--color-text-2);
+	border-bottom: 1px solid var(--color-neutral-2);
+	padding-right: 20px;
+	.header-center {
+		flex: 1;
+	}
+	.header-right {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.layout-collapse-demo .arco-layout-header .trigger {
+	margin-left: 20px;
+}
+
+body[arco-theme='dark'] {
+	.main-layout {
+		background-color: #111;
+	}
+}
+
+.arco-layout-sider-collapsed {
+	.logo {
+		h1 {
+			display: none;
+		}
+	}
+}
