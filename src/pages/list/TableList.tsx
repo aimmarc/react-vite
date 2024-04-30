@@ -73,7 +73,7 @@ const TableList: React.FC = () => {
 		pageSize: 10,
 	});
 	const [collapse, setCollapse] = useState(false);
-	const { data, run } = useRequest(listTable, {
+	const { data, run, loading } = useRequest(listTable, {
 		defaultParams: [params],
 		cacheTime: 3000,
 		cacheKey: 'listTable',
@@ -160,6 +160,7 @@ const TableList: React.FC = () => {
 			</Form>
 			<Divider />
 			<Table
+				loading={loading}
 				scroll={{
 					x: 1200,
 					y: 550,

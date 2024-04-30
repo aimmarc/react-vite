@@ -7,6 +7,7 @@ import {
 	Outlet,
 } from 'react-router-dom';
 import routerConfig from '@common/config/router.config';
+import ErrorBoundary from '@/components/exceptional/ErrorBoundary';
 const modules = import.meta.glob('../pages/**/*.tsx');
 
 /**
@@ -59,9 +60,11 @@ const buildRouter = (routes: IRouterConfig[]) => {
 				<Route
 					path={route.path}
 					element={
-						<React.Suspense>
-							<RouterComponent />
-						</React.Suspense>
+						<ErrorBoundary>
+							<React.Suspense>
+								<RouterComponent />
+							</React.Suspense>
+						</ErrorBoundary>
 					}
 					key={route.path}
 				>

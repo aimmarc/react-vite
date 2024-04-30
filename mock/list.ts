@@ -94,6 +94,7 @@ export default [
 	{
 		url: '/api/list/tableList',
 		method: 'get',
+		timeout: 1000,
 		response: (req: any) => {
 			return resultSuccess(
 				Mock.mock({

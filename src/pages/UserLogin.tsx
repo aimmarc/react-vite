@@ -6,13 +6,15 @@ import {
 	Button,
 	Checkbox,
 	FormInstance,
+	Message,
 } from '@arco-design/web-react';
 import { IconUser, IconLock } from '@arco-design/web-react/icon';
 import './UserLogin.less';
 import Logo from '@/components/Logo';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useRequest } from 'ahooks';
 import { IUserLoginParams, userLogin } from '@/services/user';
+import qs from 'qs';
 
 const imageSrc = [
 	{
@@ -32,13 +34,20 @@ const imageSrc = [
 const UserLogin: React.FC = () => {
 	const navigate = useNavigate();
 	const formRef = useRef<FormInstance>(null);
+	const loca = useLocation();
 
-	const { run } = useRequest(userLogin, {
+	const { run, loading } = useRequest(userLogin, {
 		manual: true,
 		onSuccess() {
-			navigate('/', {
+			console.log(qs.parse(loca.search.replace('?', '')));
+			const { returnPath } = qs.parse(loca.search.replace('?', ''));
+
+			navigate((returnPath ? returnPath : '/') as string, {
 				replace: true,
 			});
+		},
+		onError(err) {
+			Message.error(String(err));
 		},
 	});
 
@@ -117,6 +126,7 @@ const UserLogin: React.FC = () => {
 								type="primary"
 								style={{ width: '100%' }}
 								onClick={handleSubmit}
+								loading={loading}
 							>
 								登录
 							</Button>

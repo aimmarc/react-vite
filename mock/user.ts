@@ -6,6 +6,7 @@ export default [
     {
         url: '/api/user/list',
         method: 'get',
+        timeout: 1500,
         response: (req: any) => {
             return resultSuccess(
                 Mock.mock({
@@ -35,6 +36,7 @@ export default [
     {
         url: '/api/user/login',
         method: 'post',
+        timeout: 1000,
         response: (req: any) => {
             const { body } = req;
             if (body.account === 'admin' && body.password === '88888888') {

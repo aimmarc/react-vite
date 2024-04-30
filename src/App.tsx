@@ -4,6 +4,7 @@ import BaseRouter from '@router/index';
 import { ThemeMode } from './common/enums/theme';
 import { StorageConst } from './common/constant/storage';
 import { HoxRoot } from 'hox';
+import ErrorBoundary from './components/exceptional/ErrorBoundary';
 
 const App = (): React.ReactElement => {
 	useEffect(() => {
@@ -16,7 +17,9 @@ const App = (): React.ReactElement => {
 	return (
 		<ConfigProvider>
 			<HoxRoot>
-				<BaseRouter></BaseRouter>
+				<ErrorBoundary>
+					<BaseRouter></BaseRouter>
+				</ErrorBoundary>
 			</HoxRoot>
 		</ConfigProvider>
 	);

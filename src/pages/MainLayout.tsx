@@ -20,6 +20,7 @@ import { StorageConst } from '@/common/constant/storage';
 import { ThemeMode } from '@/common/enums/theme';
 import routerConfig from '@/common/config/router.config';
 import { useAppStore } from '@/store/app';
+import ErrorBoundary from '@/components/exceptional/ErrorBoundary';
 
 const Header = Layout.Header;
 const Footer = Layout.Footer;
@@ -52,7 +53,7 @@ const BaseLayout: React.FC = () => {
 			<Menu.Item
 				key="2"
 				onClick={() =>
-					navigator('/user/login', {
+					navigator(`/user/login?returnPath=${local.pathname}`, {
 						replace: true,
 					})
 				}
@@ -115,7 +116,9 @@ const BaseLayout: React.FC = () => {
 				<Layout style={{ padding: '0 24px' }} className="main-layout">
 					{buildBread()}
 					<Content>
-						<Outlet />
+						<ErrorBoundary>
+							<Outlet />
+						</ErrorBoundary>
 					</Content>
 					<Footer>{appStore?.settings.footerTip}</Footer>
 				</Layout>

@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 const request = axios.create({
-	baseURL: '',
+	baseURL: import.meta.env.VITE_API_PREFIX,
 	headers: {},
 });
 
@@ -22,7 +22,7 @@ request.interceptors.response.use(
 		if (Number(data.code) === 10000) {
 			return data.data;
 		}
-		return null;
+		return Promise.reject(data.message);
 	},
 	(error: Error) => {
 		Promise.reject(error);
