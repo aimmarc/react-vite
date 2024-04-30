@@ -1,6 +1,21 @@
 .layout-collapse-demo {
 	height: 100vh;
 	background: var(--color-fill-2);
+	.header {
+		position: fixed;
+		width: -webkit-fill-available;
+		width: -moz-available;
+		width: fill-available;
+		z-index: 8;
+		background: rgba(255, 255, 255, 0.8) !important;
+		backdrop-filter: blur(70px);
+	}
+	.arco-layout-sider {
+		z-index: 9;
+	}
+	.main-layout {
+		padding: 54px 24px 24px;
+	}
 }
 
 .layout-collapse-demo .arco-layout-sider .logo {
@@ -62,8 +77,13 @@
 }
 
 body[arco-theme='dark'] {
-	.main-layout {
-		background-color: #111;
+	.layout-collapse-demo {
+		.main-layout {
+			background-color: #111;
+		}
+		.header {
+			background: rgba(42, 42, 43, 0.8) !important;
+		}
 	}
 }
 

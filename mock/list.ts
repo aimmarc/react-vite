@@ -121,4 +121,22 @@ export default [
 			);
 		},
 	},
+	{
+		url: '/api/list/message',
+		method: 'get',
+		timeout: 500,
+		response: () => {
+			return resultSuccess(
+				Mock.mock({
+					['data|6']: [
+						{
+							username: '@cname',
+							content: '@cword(10, 30)',
+							time: Random.date('yyyy-MM-dd'),
+						},
+					],
+				}).data
+			);
+		},
+	},
 ];

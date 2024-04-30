@@ -17,6 +17,10 @@ export const [useAppStore, getAppStore] = createGlobalStore(() => {
 	});
 
 	function setDarkMode(isDarkMode = false) {
+		localStorage.setItem(
+			StorageConst.ARCO_THEME,
+			isDarkMode ? ThemeMode.DARK : ThemeMode.LIGHT
+		);
 		setAppStore({
 			...appStore,
 			darkMode: isDarkMode,

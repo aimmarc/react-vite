@@ -75,34 +75,42 @@ const BaseLayout: React.FC = () => {
 				handleCollapsed={(state) => setCollapsed(state)}
 			/>
 			<Layout className="right-layout">
-				<Header style={{ paddingLeft: 20 }}>
+				<Header
+					style={{
+						paddingLeft: 20,
+					}}
+					className="header"
+				>
 					<h3>{findPageTitleByPathname(local.pathname)}</h3>
 					<div className="header-center"></div>
 					<div className="header-right">
-						<Button
-							icon={
-								appStore.darkMode ? <IconSun /> : <IconMoon />
-							}
-							iconOnly
-							shape="circle"
-							onClick={() => {
-								const themeMode =
-									(localStorage.getItem(
-										StorageConst.ARCO_THEME
-									) || ThemeMode.LIGHT) === ThemeMode.LIGHT
-										? ThemeMode.DARK
-										: ThemeMode.LIGHT;
-								document.body.setAttribute(
-									'arco-theme',
-									themeMode
-								);
-								localStorage.setItem(
-									StorageConst.ARCO_THEME,
-									themeMode
-								);
-								setDarkMode(themeMode === ThemeMode.DARK);
-							}}
-						></Button>
+						{appStore.settings.darkMode ? (
+							<Button
+								icon={
+									appStore.darkMode ? (
+										<IconSun />
+									) : (
+										<IconMoon />
+									)
+								}
+								iconOnly
+								shape="circle"
+								onClick={() => {
+									const themeMode =
+										(localStorage.getItem(
+											StorageConst.ARCO_THEME
+										) || ThemeMode.LIGHT) ===
+										ThemeMode.LIGHT
+											? ThemeMode.DARK
+											: ThemeMode.LIGHT;
+									document.body.setAttribute(
+										'arco-theme',
+										themeMode
+									);
+									setDarkMode(themeMode === ThemeMode.DARK);
+								}}
+							></Button>
+						) : null}
 						<Dropdown droplist={dropList} position="bl">
 							<Avatar
 								size={30}
@@ -113,7 +121,7 @@ const BaseLayout: React.FC = () => {
 						</Dropdown>
 					</div>
 				</Header>
-				<Layout style={{ padding: '0 24px' }} className="main-layout">
+				<Layout className="main-layout">
 					{buildBread()}
 					<Content>
 						<ErrorBoundary>

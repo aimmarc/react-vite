@@ -4,7 +4,7 @@ import workplace from '@/assets/workplace.png';
 const Workplace: React.FC = () => {
 	return (
 		<>
-			<img src={workplace} alt="" />
+			<img style={{ width: '100%' }} src={workplace} alt="" />
 		</>
 	);
 };

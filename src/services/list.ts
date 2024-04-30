@@ -9,3 +9,7 @@ export async function listTable(params: {
 		params,
 	});
 }
+
+export async function listMessage(): Promise<Record<string, any>[]> {
+	return request.get('/api/list/message');
+}
